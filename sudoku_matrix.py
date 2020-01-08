@@ -132,12 +132,16 @@ class SudokuMatrix(object):
         """
 
         solved_sudoku = solve(self.grid)
-        rows = 'ABCDEFGHI'
-        cols = '123456789'
-        for square, value in solved_sudoku.items():
-            row = rows.find(square[0])
-            col = cols.find(square[1])
-            self.inner_matrix[row, col] = int(value)
+        if not solved_sudoku:
+            print("No solution for the provided Sudoku matrix exists!")
+        else:
+            rows = 'ABCDEFGHI'
+            cols = '123456789'
+
+            for square, value in solved_sudoku.items():
+                row = rows.find(square[0])
+                col = cols.find(square[1])
+                self.inner_matrix[row, col] = int(value)
 
 
 if __name__ == '__main__':
